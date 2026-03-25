@@ -1,7 +1,7 @@
 from fetch import fetch_articles
 from analyze import analyze_articles
 from db import save_topic_ideas
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 import re
 

@@ -1,6 +1,15 @@
 import requests
 from config import MODEL, OLLAMA_URL
 
+def ask_llm(prompt):
+    response = requests.post(OLLAMA_URL, json={
+        "model": MODEL,
+        "prompt": prompt,
+        "stream": False
+    })
+    response.raise_for_status()
+    return response.json()["response"]
+
 def analyze_articles(articles):
     content = "\n\n".join([
         f"Title: {a['title']}\nSummary: {a['summary']}"
